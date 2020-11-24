@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 import Note from './components/Note/Note';
+import db from './firebase';
+import './App.css';
 
 function App() {
 
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+
+  useEffect(() => {
+    db.collection('notes').onSnapshot(snapshot => {
+      
+      setNotes(snapshot.docs.map(el=> {
+        return {
+          id: el.id,
+          title: el.data().title,
+          body: el.data().body
+        }
+      }));
+
+    });
+  }, []);
 
   const titleHandler = (event) => {
     setTitle(event.target.value);
@@ -26,9 +41,12 @@ function App() {
   }
 
   let showNotes = notes.map((el) => (
-    <Note title={el.title}
+    <Note key={el.id}
+      title={el.title}
       body={el.body} />
   ));
+
+  console.log(notes);
 
   return (
     <div>
