@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Note from './components/Note/Note';
+import firebase from 'firebase';
 import db from './firebase';
 import './App.css';
 
@@ -10,9 +11,9 @@ function App() {
   const [body, setBody] = useState('');
 
   useEffect(() => {
-    db.collection('notes').onSnapshot(snapshot => {
-      
-      setNotes(snapshot.docs.map(el=> {
+    db.collection('notes').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+
+      setNotes(snapshot.docs.map(el => {
         return {
           id: el.id,
           title: el.data().title,
@@ -31,13 +32,17 @@ function App() {
     setBody(event.target.value);
   }
 
-  const noteSubmitHandler = () => {
-    let newNote = {
-      title: title,
-      body: body
-    }
+  const addNoteHandler = () => {
 
-    setNotes([...notes, newNote]);
+    db.collection('notes').add({
+      title: title,
+      body: body,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    setTitle('');
+    setBody('');
+
   }
 
   let showNotes = notes.map((el) => (
@@ -46,14 +51,12 @@ function App() {
       body={el.body} />
   ));
 
-  console.log(notes);
-
   return (
     <div>
       <h1>Blue Notes</h1>
       <input type="text" name="title" value={title} onChange={titleHandler} />
       <textarea type="text" name="body" value={body} onChange={bodyHandler} />
-      <button onClick={noteSubmitHandler}>Submit</button>
+      <button onClick={addNoteHandler}>Submit</button>
       {showNotes}
     </div>
   );
