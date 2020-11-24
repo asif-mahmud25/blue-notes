@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Note from './components/Note/Note';
 
 function App() {
 
@@ -24,7 +25,10 @@ function App() {
     setNotes([...notes, newNote]);
   }
 
-
+  let showNotes = notes.map((el) => (
+    <Note title={el.title}
+      body={el.body} />
+  ));
 
   return (
     <div>
@@ -32,6 +36,7 @@ function App() {
       <input type="text" name="title" value={title} onChange={titleHandler} />
       <textarea type="text" name="body" value={body} onChange={bodyHandler} />
       <button onClick={noteSubmitHandler}>Submit</button>
+      {showNotes}
     </div>
   );
 }
