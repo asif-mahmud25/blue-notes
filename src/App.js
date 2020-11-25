@@ -45,10 +45,16 @@ function App() {
 
   }
 
+  const deleteNote = (id) => {
+    db.collection('notes').doc(id).delete();
+  }
+
   let showNotes = notes.map((el) => (
     <Note key={el.id}
+      id={el.id}
       title={el.title}
-      body={el.body} />
+      body={el.body} 
+      delete = {deleteNote}/>
   ));
 
   return (
