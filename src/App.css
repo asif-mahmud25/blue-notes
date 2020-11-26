@@ -1,0 +1,78 @@
+.logo-heading {
+    color: #4169e1;
+    font-size: 36px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.input-section input {
+    display: block;
+    width: 50%;
+    height: 40px;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding-left: 16px;
+    font-size: 16px;
+    font-family: 'Roboto';
+    color: #dedede;
+    outline: none;
+    margin: 16px auto;
+    background: rgba(51,51,51,0.3);
+}
+
+.input-section input::placeholder {
+    color: #dedede;
+    opacity: 0.6;
+}
+
+.input-section textarea {
+    display: block;
+    width: 50%;
+    height: 70px;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding-left: 16px;
+    padding-top: 8px;
+    font-size: 16px;
+    font-family: 'Roboto';
+    color: #dedede;
+    outline: none;
+    margin: 0 auto;
+    background: rgba(51,51,51,0.3);
+}
+
+.input-section textarea::placeholder {
+    color: #dedede;
+    opacity: 0.6;
+}
+
+.input-section button {
+    width: 50%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #333333;
+    color: #dedede;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    display: block;
+    margin: 16px auto;
+    border-radius: 6px;
+}
+
+.space {
+    width: 100%;
+    height: 30px;
+}
+
+@media (max-width: 600px){
+    .input-section input,
+    .input-section textarea,
+    .input-section button {
+        width: 100%;
+    }
+}

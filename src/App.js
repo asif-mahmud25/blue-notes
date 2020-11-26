@@ -53,17 +53,36 @@ function App() {
     <Note key={el.id}
       id={el.id}
       title={el.title}
-      body={el.body} 
-      delete = {deleteNote}/>
+      body={el.body}
+      delete={deleteNote} />
   ));
 
   return (
-    <div>
-      <h1>Blue Notes</h1>
-      <input type="text" name="title" value={title} onChange={titleHandler} />
-      <textarea type="text" name="body" value={body} onChange={bodyHandler} />
-      <button onClick={addNoteHandler}>Submit</button>
+    <div className="container">
+
+      <h1 className="logo-heading">Blue Notes</h1>
+
+      <div className="input-section">
+        <input type="text"
+          placeholder="Title"
+          name="title"
+          value={title}
+          onChange={titleHandler} />
+
+        <textarea
+          type="text"
+          placeholder="Note"
+          name="body"
+          value={body}
+          onChange={bodyHandler} />
+
+        <button onClick={addNoteHandler}>Submit</button>
+      </div>
+
+      <div className="space"></div>
+
       {showNotes}
+
     </div>
   );
 }

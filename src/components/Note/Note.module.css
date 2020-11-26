@@ -1,0 +1,36 @@
+.noteBox {
+    width: 70%;
+    background: #4169e1;
+    display: block;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px auto;
+}
+
+.noteBox h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #ededed;
+    margin-bottom: 16px;
+}
+
+.noteBox p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #dedede;
+}
+
+.noteBox h3 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 20px;
+    color: #e9533a;
+    text-align: right;
+    cursor: pointer;
+}
+
+@media (max-width: 600px){
+    .noteBox{
+        width: 100%;
+    }
+}
